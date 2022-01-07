@@ -1,0 +1,21 @@
+module addSubtract(DP,S,O,A,B);
+  input [2:0] A, B;
+  input O;
+  wire [2:0] C,Su,D1 ;
+  wire Ca,W1,W2;
+  output [6:0] S;
+  output DP;
+ 
+  
+  complement_no1 c1(B,C,O);
+  threebitadder c2(A,C,Su,Ca);
+  or_gate c3(Ca,(~O), W1);
+  complement_no1 c4(Su,D1,(~W1),);
+  and_gate c5(Ca,(~O),W2);
+  segmentDecoder c6(S,{W2,D1});
+  
+  assign DP = W1;
+  
+endmodule
+
+  
